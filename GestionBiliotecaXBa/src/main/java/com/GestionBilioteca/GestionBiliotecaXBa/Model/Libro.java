@@ -1,60 +1,28 @@
 package com.GestionBilioteca.GestionBiliotecaXBa.Model;
 
+import com.mysql.cj.jdbc.Blob;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
 import java.util.ArrayList;
 import java.util.Date;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+@Table(name = "Libro")
 public class Libro {
-    String nombre;
-    String autor;
-    boolean estado;
-    Date añoPublicacion;
-    ArrayList<Genero> generos;
-
-    public Libro(String nombre, String autor, boolean estado, Date añoPublicacion, ArrayList<Genero> generos) {
-        this.nombre = nombre;
-        this.autor = autor;
-        this.estado = estado;
-        this.añoPublicacion = añoPublicacion;
-        this.generos = new ArrayList<>();
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public ArrayList<Genero> getGeneros() {
-        return generos;
-    }
-
-    public void setGeneros(ArrayList<Genero> generos) {
-        this.generos = generos;
-    }
-
-    public Date getAñoPublicacion() {
-        return añoPublicacion;
-    }
-
-    public void setAñoPublicacion(Date añoPublicacion) {
-        this.añoPublicacion = añoPublicacion;
-    }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idLibro;
+    private String nombre;
+    private String autor;
+    private Date year;
+    private Integer stock;
+    private Blob imagen;
+    private ArrayList<Genero> generos;
 }
