@@ -19,7 +19,11 @@ public class Prestamo {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer idPrestamo;
         private Date fecha;
+
+        @ManyToOne
+        @JoinColumn(name = "Estudiante_idEstudiante",insertable = false,updatable = false)
         private Estudiante estudiante;
+
         private ArrayList<Libro> libros;
 
 
