@@ -24,5 +24,8 @@ public class Libro {
     private Date year;
     private Integer stock;
     private Blob imagen;
-    private ArrayList<Genero> generos;
+
+    @OneToOne(mappedBy = "libro",cascade =CascadeType.ALL )
+    private Inventario inventario;
+
 }
