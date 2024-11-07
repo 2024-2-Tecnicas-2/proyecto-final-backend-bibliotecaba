@@ -9,7 +9,7 @@ public class LibrosGeneroPK implements Serializable {
     @Column(name = "Libro_idLibro")
     private  Integer idLibro;
     @Column(name = "Genero_genero")
-    private  Integer idGenero;
+    private  String idGenero;
 
     public Integer getIdLibro() {
         return idLibro;
@@ -19,11 +19,11 @@ public class LibrosGeneroPK implements Serializable {
         this.idLibro = idLibro;
     }
 
-    public Integer getIdGenero() {
+    public String getIdGenero() {
         return idGenero;
     }
 
-    public void setIdGenero(Integer idGenero) {
+    public void setIdGenero(String idGenero) {
         this.idGenero = idGenero;
     }
 }

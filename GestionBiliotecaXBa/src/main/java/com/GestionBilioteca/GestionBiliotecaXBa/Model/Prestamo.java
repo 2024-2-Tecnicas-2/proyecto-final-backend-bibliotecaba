@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +25,8 @@ public class Prestamo {
         @JoinColumn(name = "Estudiante_idEstudiante",insertable = false,updatable = false)
         private Estudiante estudiante;
 
-        private ArrayList<Libro> libros;
+        @OneToMany(mappedBy = "prestamo")
+        private List<LibrosPrestamo> prestamos;
 
 
 }

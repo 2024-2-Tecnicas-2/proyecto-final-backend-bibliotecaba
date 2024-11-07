@@ -1,8 +1,6 @@
 package com.GestionBilioteca.GestionBiliotecaXBa.Model;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -11,4 +9,13 @@ import lombok.Data;
 public class LibrosPrestamo {
     @EmbeddedId
     private LibrosPrestamoPK id;
+
+    @ManyToOne
+    @JoinColumn(name = "Libro_idLibro")
+    private  Libro libro;
+
+    @ManyToOne
+    @JoinColumn(name = "Prestamo_idPrestamo")
+    private  Prestamo prestamo;
+
 }

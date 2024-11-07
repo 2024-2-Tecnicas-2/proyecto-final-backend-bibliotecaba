@@ -12,6 +12,6 @@ public class Inventario {
 
     private Integer prestamos;
 
-    @JoinColumn(name = "idLibro")
+    @JoinColumn(name = "idLibro", insertable = false,updatable = false)
     private Libro libro;
 }

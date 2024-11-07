@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,5 +28,8 @@ public class Libro {
 
     @OneToOne(mappedBy = "libro",cascade =CascadeType.ALL )
     private Inventario inventario;
+
+    @OneToMany(mappedBy = "libro")
+    private List<LibrosGenero> generos;
 
 }
