@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/v1")
@@ -23,6 +23,7 @@ public class LibroController {
     @GetMapping("/libros")
     public List<Libro> listarLibros(){
         return (List<Libro>) libroRepository.findAll();
+
     }
 
     @GetMapping("/libros/{generos}")
@@ -36,11 +37,11 @@ public class LibroController {
 
     }
 
-    @GetMapping("/libros/{stock}")
+    @GetMapping("/libros/stock/{stock}")
     public  List<Libro> ListarStock(@PathVariable Integer stock ){
         return  libroRepository.findByStockLessThan(stock);
     }
-    @GetMapping("/libros/{nombre}")
+    @GetMapping("/libros/libro/{nombre}")
     public ResponseEntity<Libro> libro(@PathVariable String nombre){
           Libro libro =libroRepository.findByNombre(nombre).orElseThrow(() -> new ResourceNotFoundException("No Se encuentra el libro por el nombre "+ nombre));
           return ResponseEntity.ok(libro);
