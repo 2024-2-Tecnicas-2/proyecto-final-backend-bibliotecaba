@@ -31,7 +31,7 @@ public class LibroController {
          List<Libro> libro =libroRepository.findByGeneros_GeneroInOrderByNombreAsc(generos);
 
                  if(libro.isEmpty()){
-                     throw new ResourceNotFoundException("No se encuentran libros para los géneros: " + generos);
+                     throw new ResourceNotFoundException("No se encuentran los libros por los géneros: " + generos);
                  }
         return ResponseEntity.ok(libro);
 
@@ -41,6 +41,7 @@ public class LibroController {
     public  List<Libro> ListarStock(@PathVariable Integer stock ){
         return  libroRepository.findByStockLessThan(stock);
     }
+
     @GetMapping("/libros/libro/{nombre}")
     public ResponseEntity<Libro> libro(@PathVariable String nombre){
           Libro libro =libroRepository.findByNombre(nombre).orElseThrow(() -> new ResourceNotFoundException("No Se encuentra el libro por el nombre "+ nombre));
