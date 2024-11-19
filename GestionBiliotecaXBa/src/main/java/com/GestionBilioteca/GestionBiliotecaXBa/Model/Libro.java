@@ -1,14 +1,10 @@
 package com.GestionBilioteca.GestionBiliotecaXBa.Model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-
-import java.sql.Blob;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -22,14 +18,16 @@ public class Libro {
     private Integer idLibro;
     private String nombre;
     private String autor;
-    private Date year;
+    private LocalDate year;
     private Integer stock;
-    private Blob imagen;
+
+    @Lob
+    private byte[] imagen;
 
     @OneToOne(mappedBy = "libro",cascade =CascadeType.ALL )
     private Inventario inventario;
 
     @OneToMany(mappedBy = "libro")
-    private List<LibrosGenero> generos;
+    private List<LibrosGenero> Librosgenero;
 
 }

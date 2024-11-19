@@ -15,7 +15,9 @@ public class LibrosGenero {
     @JoinColumn(name = "Libro_idLibro", insertable = false,updatable = false)
     private Libro libro;
 
-    @Enumerated(EnumType.STRING)
-    private  Genero genero;
+
+    @ManyToOne
+    @JoinColumn(name = "Gebero_genero",insertable = false,updatable = false)
+    private Genero generos;
 
 }

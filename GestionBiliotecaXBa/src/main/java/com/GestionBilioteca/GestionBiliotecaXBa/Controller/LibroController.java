@@ -61,7 +61,7 @@ public class LibroController {
        libro.setAutor(libroRequest.getAutor());
        libro.setYear(libroRequest.getYear());
        libro.setStock(libroRequest.getStock());
-       libro.setGeneros(libroRequest.getGeneros());
+       libro.setLibrosgenero(libroRequest.getLibrosgenero());
        libro.setImagen(libroRequest.getImagen());
        Libro libroActualizado=libroRepository.save(libro);
 

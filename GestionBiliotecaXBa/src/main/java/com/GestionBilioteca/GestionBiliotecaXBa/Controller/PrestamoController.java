@@ -3,6 +3,7 @@ package com.GestionBilioteca.GestionBiliotecaXBa.Controller;
 import com.GestionBilioteca.GestionBiliotecaXBa.Model.Libro;
 import com.GestionBilioteca.GestionBiliotecaXBa.Model.Prestamo;
 import com.GestionBilioteca.GestionBiliotecaXBa.exception.ResourceNotFoundException;
+import com.GestionBilioteca.GestionBiliotecaXBa.repository.LibroCrudRepository;
 import com.GestionBilioteca.GestionBiliotecaXBa.repository.PrestamoCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class PrestamoController {
 
     @Autowired
     private PrestamoCrudRepository prestamoCrudRepository;
+
+    @Autowired
+    private LibroCrudRepository libroCrudRepository;
 
     @PostMapping("/prestamos")
     public Prestamo guardarPrestamos(@RequestBody Prestamo prestamo){
@@ -43,6 +47,11 @@ public class PrestamoController {
         Map<String,Boolean> response =new HashMap<>();
         response.put("deleted" ,Boolean.TRUE);
         return ResponseEntity.ok(response);
+    }
+
+    public ResponseEntity<Map<String,Boolean>> prestarLibro(@PathVariable Integer idLibro){
+        Libro libro =libroCrudRepository.findById(idLibro).orElseThrow(()-> new ResourceNotFoundException("El libro con ese id no existe "+ idLibro));
+
     }
 
 
