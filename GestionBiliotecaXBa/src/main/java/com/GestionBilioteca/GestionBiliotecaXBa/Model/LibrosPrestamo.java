@@ -11,15 +11,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "LibroPrestamo")
 public class LibrosPrestamo {
+
     @EmbeddedId
     private LibrosPrestamoPK id;
 
     @ManyToOne
-    @JoinColumn(name = "Libro_idLibro")
+    @JoinColumn(name = "Libro_idLibro",insertable = false,updatable = false)
     private  Libro libro;
 
     @ManyToOne
-    @JoinColumn(name = "Prestamo_idPrestamo")
+    @JoinColumn(name = "Prestamo_idPrestamo",insertable = false,updatable = false)
     private  Prestamo prestamo;
 
 }

@@ -33,7 +33,7 @@ public class PrestamoController {
 
     @GetMapping("/prestamos/{id}")
     public List<Prestamo> listarPrestamosId(@PathVariable Integer id){
-       return  prestamoCrudRepository.findByEstudianteId(id);
+       return  prestamoCrudRepository.findByEstudianteIdEstudiante(id);
     }
 
     @DeleteMapping("/prestamos/{id}")

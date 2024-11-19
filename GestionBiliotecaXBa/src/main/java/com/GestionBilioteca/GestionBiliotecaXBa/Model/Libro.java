@@ -1,13 +1,13 @@
 package com.GestionBilioteca.GestionBiliotecaXBa.Model;
 
-import com.mysql.cj.jdbc.Blob;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import java.util.ArrayList;
+import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 

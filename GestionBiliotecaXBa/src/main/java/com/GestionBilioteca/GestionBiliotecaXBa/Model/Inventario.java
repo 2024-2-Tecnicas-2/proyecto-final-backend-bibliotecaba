@@ -18,6 +18,7 @@ public class Inventario {
 
     private Integer prestamos;
 
+    @OneToOne
     @JoinColumn(name = "idLibro", insertable = false,updatable = false)
     private Libro libro;
 }
