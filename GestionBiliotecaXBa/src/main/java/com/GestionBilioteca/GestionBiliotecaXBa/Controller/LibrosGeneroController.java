@@ -25,7 +25,7 @@ public class LibrosGeneroController {
     @Autowired
     private LibrosGeneroCrudRepository librosGeneroCrudRepository;
 
-    @PostMapping("/{idLibro}/generos")
+    @PostMapping("/generos/{idLibro}")
     public ResponseEntity<Libro> asignarGeneros(@PathVariable Integer idLibro, @RequestBody List<Integer> generosIds) {
 
         Libro libro = libroCrudRepository.findById(idLibro)
@@ -41,8 +41,8 @@ public class LibrosGeneroController {
         }
         return ResponseEntity.ok(libro);
     }
-    
-    @GetMapping("/{idLibro}/generos")
+
+    @GetMapping("/generos/{idLibro}")
     public List<LibrosGenero> librosGeneros(@PathVariable Integer idLibro ){
         return  librosGeneroCrudRepository.findByLibroIdLibro(idLibro);
     }
