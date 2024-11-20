@@ -39,7 +39,7 @@ public class EstudianteController {
 
 
     @PutMapping("/estudiantes/{id}")
-    public ResponseEntity<Estudiante> ActualizarLibro(@PathVariable Integer id,@RequestBody Estudiante estudianteRequest){
+    public ResponseEntity<Estudiante> ActualizarLibr(@PathVariable Integer id,@RequestBody Estudiante estudianteRequest){
         Estudiante estudiante =estudianteCrudRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("El estudiante con ese id no existe "+ id));
 
         estudiante.setNombre(estudianteRequest.getNombre());

@@ -10,7 +10,6 @@ import java.util.Optional;
 public interface LibroCrudRepository extends CrudRepository<Libro, Integer> {
 
     //listar libros por genero
-    List<Libro>  findByGeneros_GeneroInOrderByNombreAsc(List<Genero> generos);
     List<Libro> findByStockLessThan(Integer stock );
     Optional<Libro> findByNombre(String nombre);
 

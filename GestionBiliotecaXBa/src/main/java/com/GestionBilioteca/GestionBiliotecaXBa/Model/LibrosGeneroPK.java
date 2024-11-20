@@ -9,21 +9,21 @@ public class LibrosGeneroPK implements Serializable {
     @Column(name = "Libro_idLibro")
     private  Integer idLibro;
     @Column(name = "Genero_genero")
-    private  String idGenero;
+    private  Integer idGenero;
 
     public Integer getIdLibro() {
         return idLibro;
     }
-
+    
     public void setIdLibro(Integer idLibro) {
         this.idLibro = idLibro;
     }
 
-    public String getIdGenero() {
+    public Integer getIdGenero() {
         return idGenero;
     }
 
-    public void setIdGenero(String idGenero) {
+    public void setIdGenero(Integer idGenero) {
         this.idGenero = idGenero;
     }
 }

@@ -15,6 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:5173")
 public class LibroController {
 
     @Autowired
@@ -26,16 +27,16 @@ public class LibroController {
 
     }
 
-    @GetMapping("/libros/{generos}")
-    public ResponseEntity<List<Libro>> listarLibrosGenero(@PathVariable List<Genero> generos){
-         List<Libro> libro =libroRepository.findByGeneros_GeneroInOrderByNombreAsc(generos);
+   // @GetMapping("/libros/{generos}")
+    //public ResponseEntity<List<Libro>> listarLibrosGenero(@PathVariable List<Genero> generos){
+      //   List<Libro> libro =libroRepository.findByGeneros_GeneroInOrderByNombreAsc(generos);
 
-                 if(libro.isEmpty()){
-                     throw new ResourceNotFoundException("No se encuentran los libros por los géneros: " + generos);
-                 }
-        return ResponseEntity.ok(libro);
+        //         if(libro.isEmpty()){
+          //           throw new ResourceNotFoundException("No se encuentran los libros por los géneros: " + generos);
+            //     }
+        //return ResponseEntity.ok(libro);
 
-    }
+    //}
 
     @GetMapping("/libros/stock/{stock}")
     public  List<Libro> ListarStock(@PathVariable Integer stock ){
@@ -61,7 +62,7 @@ public class LibroController {
        libro.setAutor(libroRequest.getAutor());
        libro.setYear(libroRequest.getYear());
        libro.setStock(libroRequest.getStock());
-       libro.setLibrosgenero(libroRequest.getLibrosgenero());
+       libro.setLibroGeneros(libroRequest.getLibroGeneros());
        libro.setImagen(libroRequest.getImagen());
        Libro libroActualizado=libroRepository.save(libro);
 

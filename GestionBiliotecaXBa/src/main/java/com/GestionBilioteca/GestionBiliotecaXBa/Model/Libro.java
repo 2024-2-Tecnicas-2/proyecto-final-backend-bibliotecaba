@@ -28,6 +28,6 @@ public class Libro {
     private Inventario inventario;
 
     @OneToMany(mappedBy = "libro")
-    private List<LibrosGenero> Librosgenero;
+    private List<LibrosGenero> libroGeneros;
 
 }

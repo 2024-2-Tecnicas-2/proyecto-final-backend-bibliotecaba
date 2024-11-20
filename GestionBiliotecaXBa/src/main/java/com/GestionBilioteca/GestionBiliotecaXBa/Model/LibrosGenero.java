@@ -17,7 +17,7 @@ public class LibrosGenero {
 
 
     @ManyToOne
-    @JoinColumn(name = "Gebero_genero",insertable = false,updatable = false)
-    private Genero generos;
+    @JoinColumn(name = "Genero_genero",insertable = false,updatable = false)
+    private Genero genero;
 
 }

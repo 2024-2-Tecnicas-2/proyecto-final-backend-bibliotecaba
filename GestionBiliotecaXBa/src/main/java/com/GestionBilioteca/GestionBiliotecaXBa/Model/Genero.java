@@ -11,16 +11,16 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "Gebero")
+@Table(name = "Genero")
 public class Genero {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer  idGenero;
 
-    private String Genero;
+    private String genero;
 
     //relacion
-    @OneToMany(mappedBy = "generos")
-    private List<LibrosGenero> generos;
+    @OneToMany(mappedBy = "genero")
+    private List<LibrosGenero> librosGeneros;
 }
