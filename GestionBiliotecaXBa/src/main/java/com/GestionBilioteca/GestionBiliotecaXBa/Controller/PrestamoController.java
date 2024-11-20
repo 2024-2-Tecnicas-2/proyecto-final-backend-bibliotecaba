@@ -1,14 +1,17 @@
 package com.GestionBilioteca.GestionBiliotecaXBa.Controller;
 
+import com.GestionBilioteca.GestionBiliotecaXBa.Model.Inventario;
 import com.GestionBilioteca.GestionBiliotecaXBa.Model.Libro;
 import com.GestionBilioteca.GestionBiliotecaXBa.Model.Prestamo;
 import com.GestionBilioteca.GestionBiliotecaXBa.exception.ResourceNotFoundException;
+import com.GestionBilioteca.GestionBiliotecaXBa.repository.InventarioCrudRepository;
 import com.GestionBilioteca.GestionBiliotecaXBa.repository.LibroCrudRepository;
 import com.GestionBilioteca.GestionBiliotecaXBa.repository.PrestamoCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +25,9 @@ public class PrestamoController {
 
     @Autowired
     private LibroCrudRepository libroCrudRepository;
+
+    @Autowired
+    private InventarioCrudRepository inventarioCrudRepository;
 
     @PostMapping("/prestamos")
     public Prestamo guardarPrestamos(@RequestBody Prestamo prestamo){
@@ -49,10 +55,32 @@ public class PrestamoController {
         return ResponseEntity.ok(response);
     }
 
-    public ResponseEntity<Map<String,Boolean>> prestarLibro(@PathVariable Integer idLibro){
-        Libro libro =libroCrudRepository.findById(idLibro).orElseThrow(()-> new ResourceNotFoundException("El libro con ese id no existe "+ idLibro));
 
+
+    @PostMapping("/prestamos/{id}")
+    public ResponseEntity<String> prestarLibro(@PathVariable Integer idLibro) {
+
+        Libro libro = libroCrudRepository.findById(idLibro)
+                .orElseThrow(() -> new ResourceNotFoundException("Libro no encontrado con id: " +idLibro ));
+
+        // Verificar si hay stock disponible
+        if (libro.getStock() <= 0) {
+            return ResponseEntity.badRequest().body("El libro no está disponible (stock insuficiente)");
+        }
+        Prestamo prestamo =new Prestamo();
+        prestamo.setFecha(new Date());
+        prestamoCrudRepository.save(prestamo);
+
+        libro.setStock(libro.getStock() - 1);
+        libroCrudRepository.save(libro);
+
+        Inventario inventario =new Inventario();
+        
+        inventario.setPrestamos(inventario.getPrestamos()+1);
+
+        return ResponseEntity.ok("Préstamo realizado con éxito.");
     }
+
 
 
 }
