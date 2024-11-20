@@ -1,6 +1,5 @@
 package com.GestionBilioteca.GestionBiliotecaXBa.repository;
 
-
 import com.GestionBilioteca.GestionBiliotecaXBa.Model.Prestamo;
 import org.springframework.data.repository.CrudRepository;
 

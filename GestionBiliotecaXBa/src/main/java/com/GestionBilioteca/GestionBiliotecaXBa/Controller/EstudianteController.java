@@ -1,7 +1,6 @@
 package com.GestionBilioteca.GestionBiliotecaXBa.Controller;
 
 import com.GestionBilioteca.GestionBiliotecaXBa.Model.Estudiante;
-import com.GestionBilioteca.GestionBiliotecaXBa.Model.Libro;
 import com.GestionBilioteca.GestionBiliotecaXBa.exception.ResourceNotFoundException;
 import com.GestionBilioteca.GestionBiliotecaXBa.repository.EstudianteCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
